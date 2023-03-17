@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract BadgerCoin is ERC20 {
+    // Variables
     uint256 public immutable TOTAL_SUPPLY;
     uint256 public immutable DECIMALS;
 
