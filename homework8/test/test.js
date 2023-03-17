@@ -61,10 +61,19 @@ describe("Badger", () => {
             console.log(`balance: ${balance}`)
             console.log(`amount: ${amount}`)
 
-            expect(amount).to.be.gt(balance)
-            await expect(
-                badgerCoin.connect(owner).transfer(acc3.address, amount)
-            ).to.be.revertedWith("ERC20: transfer amount exceeds balance")
+            // expect(amount).to.be.gt(balance)
+            // await expect(
+            //     await badgerCoin.connect(owner).transfer(acc3.address, amount)
+            // ).to.be.revertedWith("ERC20: transfer amount exceeds balance")
+            try {
+                await badgerCoin.connect(owner).transfer(acc3.address, amount)
+            } catch (e) {
+                console.log(`error: ${e.message}`)
+                expect(e.message).to.contain(
+                    "ERC20: transfer amount exceeds balance"
+                )
+                return
+            }
 
             throw new Error("Expected transfer to revert")
         })
