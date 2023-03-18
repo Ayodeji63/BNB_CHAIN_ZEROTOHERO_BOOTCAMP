@@ -27,6 +27,10 @@ contract BadgerNFT is ERC721, Pausable, Ownable {
         _safeMint(to, tokenId);
     }
 
+    function transfer(address from, address to, uint tokenId) public {
+        _transfer(from, to, tokenId);
+    }
+
     function _beforeTokenTransfer(
         address from,
         address to,
